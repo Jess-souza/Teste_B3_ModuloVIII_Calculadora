@@ -9,3 +9,8 @@
 - Parte 04 - Criar testes dos novos métodos.
 
 Extra: Utilizar o máximo de assertivas diferentes possível.
+
+Código para criação dos testes: https://github.com/igorsmasc/calculadora_devas
+
+Código de apoio com as principais assertivas: https://github.com/igorsmasc/carros_devas
+
