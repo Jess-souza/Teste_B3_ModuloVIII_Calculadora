@@ -2,6 +2,8 @@ package service;
 
 import static org.junit.Assert.*;
 
+import model.Quadrado;
+import model.Triangulo;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,4 +53,69 @@ public class CalculadoraServiceTest {
         //Then
         assertNotEquals(divisao, 7);
     }
+
+    @Test
+    public void deveCalcularAreaDeUmQuadrado() {
+        //Given
+        Quadrado quadrado = new Quadrado(5.0);
+        //When
+        Double areaQuadrado = calculadoraService.calcularAreaQuadrado(quadrado);
+        //Then
+        assertFalse(areaQuadrado != 25.0);
+    }
+
+    @Test
+    public void deveCalcularAreaDeUmTriangulo() {
+        //Given
+        Triangulo triangulo = new Triangulo(4.0, 6.0);
+        //When
+        Double areaTriangulo = calculadoraService.calcularAreaTriangulo(triangulo);
+        //Then
+        assertTrue(areaTriangulo == 12.0);
+    }
+
+    @Test
+    public void deveCompararAreaDeDoisQuadrados_entaoInformarQualTemMenorArea() {
+        //Given
+        Quadrado quadradoA = new Quadrado(5.0);
+        Quadrado quadradoB = new Quadrado(7.0);
+        //When
+        Quadrado menorArea = calculadoraService.quadradoDeMenorArea(quadradoA, quadradoB);
+        //Then
+        assertEquals(menorArea, quadradoA);
+    }
+
+    @Test
+    public void deveCompararAreaDeDoisTriangulos_entaoInformarQualTemMenorArea() {
+        //Given
+        Triangulo trianguloA = new Triangulo(7.0, 6.0);
+        Triangulo trianguloB = new Triangulo(9.0, 2.0);
+        //When
+        Triangulo menorArea = calculadoraService.trianguloDeMenorArea(trianguloA, trianguloB);
+        //Then
+        assertEquals(menorArea, trianguloB);
+    }
+
+    @Test
+    public void deveCompararAreaDeDoisQuadradosDeMesmoValor_entaoRetornarNull() {
+        //Given
+        Quadrado quadradoA = new Quadrado(7.0);
+        Quadrado quadradoB = new Quadrado(7.0);
+        //When
+        Quadrado menorArea = calculadoraService.quadradoDeMenorArea(quadradoA, quadradoB);
+        //Then
+        assertNull(menorArea);
+    }
+
+    @Test
+    public void deveCompararAreaDeDoisTriangulosDeMesmoValor_entaoRetornarNull() {
+        //Given
+        Triangulo trianguloA = new Triangulo(2.0, 5.0);
+        Triangulo trianguloB = new Triangulo(2.0, 5.0);
+        //When
+        Triangulo menorArea = calculadoraService.trianguloDeMenorArea(trianguloA, trianguloB);
+        //Then
+        assertNull(menorArea);
+    }
 }
+
